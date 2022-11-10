@@ -17,7 +17,7 @@ window.onload = (e) => {
   mainFunction(1000);
 };
 
-var socket = io(process.env.PATH);
+var socket = io("https://disturk.vercel.app");
 socket.emit("userInformation", userStatus);
 
 function mainFunction(time) {
