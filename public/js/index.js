@@ -17,31 +17,31 @@ window.onload = (e) => {
   mainFunction(1000);
 };
 
-var socket = io("https://disturk.herokuapp.com");
+let socket = io("https://disturk.herokuapp.com");
 socket.emit("userInformation", userStatus);
 
 function mainFunction(time) {
   navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-    var madiaRecorder = new MediaRecorder(stream);
+    let madiaRecorder = new MediaRecorder(stream);
     madiaRecorder.start();
 
-    var audioChunks = [];
+    let audioChunks = [];
 
     madiaRecorder.addEventListener("dataavailable", function (event) {
       audioChunks.push(event.data);
     });
 
     madiaRecorder.addEventListener("stop", function () {
-      var audioBlob = new Blob(audioChunks);
+      let audioBlob = new Blob(audioChunks);
 
       audioChunks = [];
 
-      var fileReader = new FileReader();
+      let fileReader = new FileReader();
       fileReader.readAsDataURL(audioBlob);
       fileReader.onloadend = function () {
         if (!userStatus.microphone || !userStatus.online) return;
 
-        var base64String = fileReader.result;
+        let base64String = fileReader.result;
         socket.emit("voice", base64String);
       };
 
@@ -58,7 +58,7 @@ function mainFunction(time) {
   });
 
   socket.on("send", function (data) {
-    var audio = new Audio(data);
+    let audio = new Audio(data);
     audio.play();
   });
 

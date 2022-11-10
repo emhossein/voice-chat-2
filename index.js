@@ -4,13 +4,16 @@ const handlebars = require("express-handlebars");
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 
+//To holding users information
 const socketsStatus = {};
 
+//config and set handlebars to express
 const customHandlebars = handlebars.create({ layoutsDir: "./views" });
 
 app.engine("handlebars", customHandlebars.engine);
 app.set("view engine", "handlebars");
 
+//enable user access to public folder
 app.use("/files", express.static("public"));
 
 app.get("/home", (req, res) => {
