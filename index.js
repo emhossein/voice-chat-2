@@ -45,5 +45,5 @@ io.on("connection", function (socket) {
   });
 });
 http.listen(3000, () => {
-  console.log("the app is run in port 3000!");
+  console.log("the app is run in port 3000");
 });
