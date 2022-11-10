@@ -4,7 +4,7 @@ const handlebars = require("express-handlebars");
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 
-const socketStatus = {};
+const socketsStatus = {};
 
 const customHandlebars = handlebars.create({ layoutsDir: "./views" });
 
