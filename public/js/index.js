@@ -17,7 +17,7 @@ window.onload = (e) => {
   mainFunction(1000);
 };
 
-var socket = io("https://disturk.vercel.app");
+var socket = io("https://disturk.herokuapp.com");
 socket.emit("userInformation", userStatus);
 
 function mainFunction(time) {
